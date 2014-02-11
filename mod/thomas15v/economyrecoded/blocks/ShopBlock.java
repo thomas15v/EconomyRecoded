@@ -1,15 +1,16 @@
 package mod.thomas15v.economyrecoded.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mod.thomas15v.economyrecoded.EconomyRecoded;
 import mod.thomas15v.economyrecoded.ModInfo;
 import mod.thomas15v.economyrecoded.TileEntity.ShopTileEntity;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ShopBlock extends BlockContainer {
 	public ShopBlock(int id) {
@@ -49,5 +50,13 @@ public class ShopBlock extends BlockContainer {
 		return -1;
 	}
 	
+
+	@Override
+	public boolean onBlockActivated(World world, int x, int y,
+			int z, EntityPlayer player, int par6, float par7,
+			float par8, float par9) {
+		player.openGui(EconomyRecoded.instance, 2, world, x, y, z);
+		return true;
+	}
 	
 }

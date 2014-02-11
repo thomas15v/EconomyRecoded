@@ -64,6 +64,7 @@ public class EconomyRecoded {
         
         @EventHandler 
         public void load(FMLInitializationEvent event) {
+
         	Wallet = new WalletItem(501);
             Coin = new Coin(502);
             IronSafeBlock = new IronMoneySafeBlock(503, Material.iron);

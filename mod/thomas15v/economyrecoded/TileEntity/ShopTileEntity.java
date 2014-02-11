@@ -1,11 +1,9 @@
 package mod.thomas15v.economyrecoded.TileEntity;
 
-import mod.thomas15v.economyrecoded.EconomyRecoded;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -13,14 +11,15 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ShopTileEntity extends TileEntity implements IInventory {
 	
+
 	public EntityItem testje = new EntityItem(getWorldObj(), 0, 0, 0, new ItemStack(Block.anvil));
+
 
 	ItemStack[] inv;
 	
 	public ShopTileEntity() {
 		inv = new ItemStack[9];
 	}
-
 
 	@Override
 	public int getSizeInventory() {
@@ -130,4 +129,5 @@ public class ShopTileEntity extends TileEntity implements IInventory {
     }
 
 }
+
 

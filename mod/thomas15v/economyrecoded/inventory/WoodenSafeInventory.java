@@ -2,9 +2,9 @@ package mod.thomas15v.economyrecoded.inventory;
 
 import mod.thomas15v.economyrecoded.EconomyRecoded;
 import mod.thomas15v.economyrecoded.TileEntity.SafeTileEntity;
+import mod.thomas15v.economyrecoded.inventory.slots.MoneySlot;
 import mod.thomas15v.economyrecoded.items.Coin;
 import mod.thomas15v.economyrecoded.items.WalletItemInventory;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -16,7 +16,7 @@ public class WoodenSafeInventory extends Container {
 	
 	int numRows = 3;
 	WalletItemInventory inventory;
-	
+
 	public WoodenSafeInventory (InventoryPlayer inventoryPlayer, SafeTileEntity te){
          
 

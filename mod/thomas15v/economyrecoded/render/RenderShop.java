@@ -44,11 +44,12 @@ public class RenderShop extends TileEntitySpecialRenderer {
         GL11.glPopMatrix();
         
         float[][] Itemlocations = {{0.2F, 1F, 0.2F} ,{0.5F, 1F, 0.2F}, {0.8F, 1F, 0.2F}, {0.2F, 0.7F, 0.57F} ,{0.5F, 0.7F, 0.57F}, {0.8F, 0.7F, 0.57F}, {0.2F, 0.35F, 0.9F} ,{0.5F, 0.35F, 0.9F}, {0.8F, 0.35F, 0.9F}};     
+        
+        float timeD = (float) (360.0 * (double) (System.currentTimeMillis() & 0x3FFFL) / (double) 0x3FFFL);
         for (int i = 0; i < Itemlocations.length; i++){
         	GL11.glPushMatrix();
             GL11.glTranslatef((float)x , (float) y, (float) z);
             GL11.glTranslatef(Itemlocations[i][0], Itemlocations[i][1], Itemlocations[i][2]);
-            float timeD = (float) (360.0 * (double) (System.currentTimeMillis() & 0x3FFFL) / (double) 0x3FFFL);
             GL11.glRotatef(timeD, 0.0F, 1.0F, 0.0F);
             GL11.glScalef(0.70F, 0.70F, 0.70F);
             shoptile.testje.hoverStart = 0f;

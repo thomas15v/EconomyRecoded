@@ -10,11 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.world.World;
 
 public class WalletItem extends Item {
 	
+	ItemStack inv[];
+
+
 	public WalletItem(int id) {
 		super(id);
 		setMaxStackSize(1);
@@ -33,7 +35,6 @@ public class WalletItem extends Item {
 		return itemstack;
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack itemstack,	EntityPlayer par2EntityPlayer, List list, boolean par4) {
 		list.add(GetTotalMoney(readFromNBT(itemstack))+ "$");
@@ -62,5 +63,4 @@ public class WalletItem extends Item {
  		 }    	
  		 return TotalMoney;
      }
-	
 }
