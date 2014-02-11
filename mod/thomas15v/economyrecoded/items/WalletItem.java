@@ -2,21 +2,20 @@ package mod.thomas15v.economyrecoded.items;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mod.thomas15v.economyrecoded.EconomyRecoded;
 import mod.thomas15v.economyrecoded.ModInfo;
-import net.minecraft.client.Minecraft;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
 import net.minecraft.world.World;
 
 public class WalletItem extends Item {
 	
 	ItemStack inv[];
+
 
 	public WalletItem(int id) {
 		super(id);
@@ -36,11 +35,32 @@ public class WalletItem extends Item {
 		return itemstack;
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack par1ItemStack,	EntityPlayer par2EntityPlayer, List list, boolean par4) {
-		list.add("KAKAK");
-		super.addInformation(par1ItemStack, par2EntityPlayer, list, par4);
+	public void addInformation(ItemStack itemstack,	EntityPlayer par2EntityPlayer, List list, boolean par4) {
+		list.add(GetTotalMoney(readFromNBT(itemstack))+ "$");
+		super.addInformation(itemstack, par2EntityPlayer, list, par4);
 	}
 	
+	public ItemStack[] readFromNBT(ItemStack item) {
+		ItemStack[] inv = new ItemStack[9 * 3];
+		if (item.stackTagCompound != null){
+	        NBTTagList tagList = item.stackTagCompound.getTagList("Inventory");
+	        for (int i = 0; i < tagList.tagCount(); i++) {
+	                NBTTagCompound tag = (NBTTagCompound) tagList.tagAt(i);
+	                byte slot = tag.getByte("Slot");
+	                if (slot >= 0 && slot < inv.length) {
+	                        inv[slot] = ItemStack.loadItemStackFromNBT(tag);
+	                }
+	        }
+		}
+        return inv;
+	}
+	
+	public int GetTotalMoney(ItemStack[] stacklist){
+ 		int TotalMoney = 0;
+ 		 for (ItemStack item : stacklist){
+ 			 if (item != null) TotalMoney += Coin.GetItemWorth(item.getItemDamage()) * item.stackSize; 	  
+ 		 }    	
+ 		 return TotalMoney;
+     }
 }

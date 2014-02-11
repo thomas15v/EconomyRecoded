@@ -36,12 +36,12 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class EconomyRecoded {
 	
 	
-		public final static CreativeTabs tab = new CreativeTab("EconomyRecoded");
-		public final static Block WoodenSafeBlock = new MoneySafeBlock(500, Material.wood);
-		public final static Item Wallet = new WalletItem(501);
-		public final static Item Coin = new Coin(502);
-		public final static Block IronSafeBlock = new IronMoneySafeBlock(503, Material.iron);
-		public final static ShopBlock Shop = new ShopBlock(504);
+		public static CreativeTabs tab = new CreativeTab("EconomyRecoded");
+		public static Block WoodenSafeBlock ;
+		public static Item Wallet;
+		public static Item Coin;
+		public static Block IronSafeBlock;
+		public static ShopBlock Shop;
 		
 		
 		public static Object econ = null;
@@ -59,40 +59,47 @@ public class EconomyRecoded {
         
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
-               logger = event.getModLog();
+               logger = event.getModLog();            
         }
         
         @EventHandler 
         public void load(FMLInitializationEvent event) {
+
+        	Wallet = new WalletItem(501);
+            Coin = new Coin(502);
+            IronSafeBlock = new IronMoneySafeBlock(503, Material.iron);
+            Shop = new ShopBlock(504);
+            WoodenSafeBlock = new MoneySafeBlock(500, Material.wood);
+        	
         		
-                proxy.registerRenderers();
-                
-                GameRegistry.registerBlock(Shop, "Shop");
-                LanguageRegistry.addName(Shop, "Shop");
-                GameRegistry.registerTileEntity(ShopTileEntity.class, "ShopTileEntity");
-                
-                GameRegistry.registerTileEntity(SafeTileEntity.class, "SafeTileEntity");
-                
-                GameRegistry.registerBlock(WoodenSafeBlock, "Wooden Safe");
-                GameRegistry.addShapedRecipe(new ItemStack(WoodenSafeBlock, 1), "ILL", "W L", "ILL",'I', Item.ingotIron, 'L' , Block.wood, 'W', Block.planks);
-                LanguageRegistry.addName(WoodenSafeBlock, "Wooden Safe");
-                
-                GameRegistry.registerBlock(IronSafeBlock, "Iron Safe");
-                LanguageRegistry.addName(IronSafeBlock, "Iron Safe");
-                                
-                GameRegistry.registerItem(Wallet, "Wallet");
-                LanguageRegistry.addName(Wallet, "Wallet");
-                GameRegistry.addShapedRecipe(new ItemStack(Wallet, 1), "XYX","XYX","XXX", 'X', Item.leather);
-                
-                GameRegistry.registerItem(Coin, "coin");
-                LanguageRegistry.addName(new ItemStack(Coin, 1, 0), "1 Cent");
-                LanguageRegistry.addName(new ItemStack(Coin, 1, 1), "1 $");
-                
-                LanguageRegistry.instance().addStringLocalization("itemGroup.EconomyRecoded","EconomyRecoded");   
-              
-                NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());        
-                
-                MinecraftForge.EVENT_BUS.register(new events());
+            proxy.registerRenderers();
+            
+            GameRegistry.registerBlock(Shop, "Shop");
+            LanguageRegistry.addName(Shop, "Shop");
+            GameRegistry.registerTileEntity(ShopTileEntity.class, "ShopTileEntity");
+            
+            GameRegistry.registerTileEntity(SafeTileEntity.class, "SafeTileEntity");
+            
+            GameRegistry.registerBlock(WoodenSafeBlock, "Wooden Safe");
+            GameRegistry.addShapedRecipe(new ItemStack(WoodenSafeBlock, 1), "ILL", "W L", "ILL",'I', Item.ingotIron, 'L' , Block.wood, 'W', Block.planks);
+            LanguageRegistry.addName(WoodenSafeBlock, "Wooden Safe");
+            
+            GameRegistry.registerBlock(IronSafeBlock, "Iron Safe");
+            LanguageRegistry.addName(IronSafeBlock, "Iron Safe");
+                            
+            GameRegistry.registerItem(Wallet, "Wallet" ,ModInfo.modid);
+            LanguageRegistry.addName(Wallet, "Wallet");
+            GameRegistry.addShapedRecipe(new ItemStack(Wallet, 1), "XYX","XYX","XXX", 'X', Item.leather);
+            
+            GameRegistry.registerItem(Coin, "coin", ModInfo.modid);
+            LanguageRegistry.addName(new ItemStack(Coin, 1, 0), "1 Cent");
+            LanguageRegistry.addName(new ItemStack(Coin, 1, 1), "1 $");
+            
+            LanguageRegistry.instance().addStringLocalization("itemGroup.EconomyRecoded","EconomyRecoded");   
+          
+            NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());        
+            
+            MinecraftForge.EVENT_BUS.register(new events());
         }
                
         @EventHandler
