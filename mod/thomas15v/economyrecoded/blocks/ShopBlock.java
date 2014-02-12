@@ -63,7 +63,7 @@ public class ShopBlock extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y,
 			int z, EntityPlayer player, int par6, float par7,
 			float par8, float par9) {
-		player.openGui(EconomyRecoded.instance, 2, world, x, y, z);
+		player.openGui(EconomyRecoded.instance, 3, world, x, y, z);
 		return true;
 	}
 	

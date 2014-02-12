@@ -20,10 +20,7 @@ public class Shopinventory extends Container {
         for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                	 	addSlotToContainer(new ShopTradeSlot(te, j + i * 3, 24 + j * 70, 1 + i * 32));
-               	 	getSlot(0).putStack(new ItemStack(Item.swordDiamond, 0));
-                }
-                
-                
+                } 
         }
 
         //commonly used vanilla code that adds the player's inventory

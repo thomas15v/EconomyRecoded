@@ -19,6 +19,9 @@ public class ShopGui extends GuiContainer {
 	int xSize = 226;
 	int ySize = 209;
 	
+	protected String Texture = "textures/gui/container/shop_gui_buyer.png";
+
+	
 	public ShopGui(InventoryPlayer player, ShopTileEntity entity) {
 		
 		super(new Shopinventory(player, entity));
@@ -29,7 +32,7 @@ public class ShopGui extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		int x = (width - xSize) /2;
 	    int y = (height - ySize) /2;
-		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.name.toLowerCase() + ":textures/gui/container/shop_gui_buyer.png"));
+		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.name.toLowerCase() + ":" + Texture));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	    
 	    this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

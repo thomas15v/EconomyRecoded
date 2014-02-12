@@ -18,7 +18,7 @@ public class ShopTileEntity extends TileEntity implements IInventory {
 	ItemStack[] inv;
 	
 	public ShopTileEntity() {
-		inv = new ItemStack[9];
+		inv = new ItemStack[9*2];
 	}
 
 	@Override
