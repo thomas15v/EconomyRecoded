@@ -13,10 +13,7 @@
 
 /src/minecraft/*
 /src/minecraft_server/*
-/src/common/*
-!/src/common/dries007/
-!/src/common/mcmod.info
-!/src/common/SP.png
+!/src/minecraft/mod
 
 *.bat
 *.sh
