@@ -35,7 +35,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class EconomyRecoded {
 	
-	
+		//test for build
 		public static CreativeTabs tab = new CreativeTab("EconomyRecoded");
 		public static Block WoodenSafeBlock ;
 		public static Item Wallet;
